@@ -10,6 +10,14 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SafeArea(
+      
+      child: Scaffold(
+        backgroundColor: Colors.green,
+        body: Center(
+          child: Text('Onboarding'),
+        ),
+      ),
+    );
   }
 }
