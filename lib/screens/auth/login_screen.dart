@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nectar/screens/auth/register_screen.dart';
+import 'package:nectar/screens/home/home_screen.dart';
 import '../../utils/supabase_client.dart';
 
 
