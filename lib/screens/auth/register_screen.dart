@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nectar/routes/app_routes.dart';
 import '../../utils/supabase_client.dart';
 import '../home/home_screen.dart';
 
@@ -40,17 +42,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
       if (response.user != null) {
         // Ajouter des informations supplémentaires dans la table 'profiles'
+        // Utiliser le client Supabase avec l'option RLS désactivée
         await supabase.from('profiles').insert({
           'id': response.user!.id,
           'name': _nameController.text.trim(),
           'email': _emailController.text.trim(),
           'created_at': DateTime.now().toIso8601String(),
-        });
+        }).select();
 
         if (mounted) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
-          );
+         Get.toNamed(AppRoutes.home);
         }
       }
     } catch (error) {
